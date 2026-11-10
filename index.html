@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الملك للخدمات الرقمية</title>
+    <!-- Tailwind CSS للتصميم العصري -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #e6edf3;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .glow-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+        .glow-card:hover {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar الشريط العلوي -->
+    <nav class="bg-[#161b22] border-b border-[#30363d] p-4 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-violet-500 tracking-wider">
+                <i class="fa-solid font-black fa-crown text-amber-400 ml-2"></i>الملك ستور
+            </h1>
+            <div class="flex items-center gap-4">
+                <a href="#services" class="hover:text-violet-400 text-sm font-semibold">الخدمات</a>
+                <a href="#contact" class="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition">تواصل معنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section البانر الرئيسي -->
+    <header class="text-center py-12 px-4 bg-gradient-to-b from-[#161b22] to-[#0d1117]">
+        <h2 class="text-4xl font-extrabold mb-4 text-white">أسرع وأمن شحن للألعاب والخدمات الرقمية</h2>
+        <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">اختر خدمتك المفضلة، أدخل معرف الحساب (ID)، وسنعالج طلبك خلال دقائق معدودة.</p>
+        
+        <!-- Search Box -->
+        <div class="max-w-md mx-auto mt-6">
+            <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="ابحث عن لعبة أو خدمة..." class="w-full px-4 py-3 bg-[#21262d] border border-[#30363d] rounded-xl focus:outline-none focus:border-violet-500 text-white">
+        </div>
+    </header>
+
+    <!-- Services Section قسم المنتجات -->
+    <main id="services" class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+        <h3 class="text-xl font-bold mb-6 border-r-4 border-violet-500 pr-3">الأكثر طلباً</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsGrid">
+
+            <!-- كارت بطاقة ببجي -->
+            <div class="glow-card rounded-2xl p-5 flex flex-col justify-between service-card">
+                <div>
+                    <div class="h-36 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-4xl text-amber-400 font-bold bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=400');">
+                        <span class="bg-black/60 px-3 py-1 rounded-lg">PUBG</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-1">شدات ببجي موبايل (UC)</h4>
+                    <p class="text-xs text-gray-400 mb-4">شحن مباشر فورياً عبر الايدي ID الخاص بك.</p>
+                    
+                    <label class="block text-xs text-gray-300 mb-1">اختر الباقة:</label>
+                    <select id="pubgAmount" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-3 text-sm text-white">
+                        <option value="60 شدة">60 شدة (UC)</option>
+                        <option value="325 شدة">325 شدة (UC)</option>
+                        <option value="660 شدة">660 شدة (UC)</option>
+                        <option value="1800 شدة">1800 شدة (UC)</option>
+                    </select>
+
+                    <label class="block text-xs text-gray-300 mb-1">معرف اللاعب (Player ID):</label>
+                    <input type="text" id="pubgId" placeholder="مثال: 512345678" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-4 text-sm text-white">
+                </div>
+                <button onclick="sendOrder('ببجي موبايل', 'pubgAmount', 'pubgId')" class="w-full bg-violet-600 hover:bg-violet-700 text-white py-2.5 rounded-xl font-bold text-sm transition">
+                    <i class="fa-brands fa-whatsapp ml-2"></i> اطلب الآن عبر واتساب
+                </button>
+            </div>
+
+            <!-- كارت فري فاير -->
+            <div class="glow-card rounded-2xl p-5 flex flex-col justify-between service-card">
+                <div>
+                    <div class="h-36 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-4xl text-red-500 font-bold bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400');">
+                        <span class="bg-black/60 px-3 py-1 rounded-lg">Free Fire</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-1">جواهر فري فاير (Diamonds)</h4>
+                    <p class="text-xs text-gray-400 mb-4">شحن سريع ومباشر برقم المعرف ID.</p>
+                    
+                    <label class="block text-xs text-gray-300 mb-1">اختر الباقة:</label>
+                    <select id="ffAmount" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-3 text-sm text-white">
+                        <option value="100 جوهرة">100 جوهرة</option>
+                        <option value="310 جوهرة">310 جوهرة</option>
+                        <option value="520 جوهرة">520 جوهرة</option>
+                        <option value="1060 جوهرة">1060 جوهرة</option>
+                    </select>
+
+                    <label class="block text-xs text-gray-300 mb-1">معرف اللاعب (Player ID):</label>
+                    <input type="text" id="ffId" placeholder="أدخل ID الحساب" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-4 text-sm text-white">
+                </div>
+                <button onclick="sendOrder('فري فاير', 'ffAmount', 'ffId')" class="w-full bg-violet-600 hover:bg-violet-700 text-white py-2.5 rounded-xl font-bold text-sm transition">
+                    <i class="fa-brands fa-whatsapp ml-2"></i> اطلب الآن عبر واتساب
+                </button>
+            </div>
+
+            <!-- كارت خدمة عامة/تليجرام -->
+            <div class="glow-card rounded-2xl p-5 flex flex-col justify-between service-card">
+                <div>
+                    <div class="h-36 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-4xl text-blue-400 font-bold bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400');">
+                        <span class="bg-black/60 px-3 py-1 rounded-lg">Digital</span>
+                    </div>
+                    <h4 class="text-lg font-bold mb-1">خدمات واشتراكات أخرى</h4>
+                    <p class="text-xs text-gray-400 mb-4">بطاقات رقمية، اشتراكات وتطبيقات مختلفة.</p>
+                    
+                    <label class="block text-xs text-gray-300 mb-1">نوع الخدمة المطلوب:</label>
+                    <input type="text" id="customService" placeholder="اكتب اسم التطبيق أو الخدمة" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-3 text-sm text-white">
+
+                    <label class="block text-xs text-gray-300 mb-1">ملاحظات أو رابط الحساب:</label>
+                    <input type="text" id="customDetails" placeholder="أدخل المعرف أو الرابط" class="w-full p-2 bg-[#21262d] border border-[#30363d] rounded-lg mb-4 text-sm text-white">
+                </div>
+                <button onclick="sendCustomOrder()" class="w-full bg-violet-600 hover:bg-violet-700 text-white py-2.5 rounded-xl font-bold text-sm transition">
+                    <i class="fa-brands fa-whatsapp ml-2"></i> اطلب الآن عبر واتساب
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Footer -->
+    <footer id="contact" class="bg-[#161b22] border-t border-[#30363d] p-6 text-center text-xs text-gray-400">
+        <p>© 2026 جميع الحقوق محفوظة لـ متجر الملك للخدمات الرقمية.</p>
+    </footer>
+
+    <!-- Script البرمجة والتفاعل -->
+    <script>
+        // ضع رقم الواتساب الخاص بك هنا شاملاً رمز الدولة بدون + (مثال: 9639XXXXXXXX)
+        const MY_PHONE_NUMBER = "963969517491"; 
+
+        function sendOrder(gameName, amountId, playerIdInputId) {
+            const amount = document.getElementById(amountId).value;
+            const playerId = document.getElementById(playerIdInputId).value;
+
+            if (!playerId) {
+                alert("يرجى كتابة رقم المعرف (ID) قبل إرسال الطلب!");
+                return;
+            }
+
+            const message = `مرحباً، أريد طلب شحن:\n- اللعبة: ${gameName}\n- الباقة: ${amount}\n- معرف الحساب ID: ${playerId}`;
+            const whatsappUrl = `https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function sendCustomOrder() {
+            const service = document.getElementById('customService').value;
+            const details = document.getElementById('customDetails').value;
+
+            if (!service) {
+                alert("يرجى تحديد الخدمة المطلوبة!");
+                return;
+            }
+
+            const message = `مرحباً، أريد استفسار/طلب خدمة:\n- الخدمة: ${service}\n- التفاصيل/الرابط: ${details}`;
+            const whatsappUrl = `https://wa.me/${MY_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function filterServices() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(input) ? 'flex' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
